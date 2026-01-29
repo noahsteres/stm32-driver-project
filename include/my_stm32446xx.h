@@ -8,7 +8,7 @@
 //*****************************
 
 // 1) Base addresses (from RM0390 memory map) 
-#define PERIPH_BASE        0x40000000U
+#define APB1PERIPH_BASE    0x40000000U
 #define AHB1PERIPH_BASE    0x40020000U
 #define APB2PERIPH_BASE    0x40010000U
 
@@ -74,12 +74,12 @@
 //*****************************
 
 // Base adresses for UART
-#define USART1_BASE      (APB2PERIPH_BASE + 0x1000U)
-#define USART6_BASE      (APB2PERIPH_BASE + 0x4000U)
-#define USART2_BASE      (PERIPH_BASE + 0x4400U)
-#define USART3_BASE      (PERIPH_BASE + 0x4800U)
-#define UART4_BASE       (PERIPH_BASE + 0x4C00U)
-#define UART5_BASE       (PERIPH_BASE + 0x5000U)
+#define USART1_BASE       (APB2PERIPH_BASE + 0x1000U)
+#define USART6_BASE       (APB2PERIPH_BASE + 0x4000U)
+#define USART2_BASE       (APB1PERIPH_BASE + 0x4400U)
+#define USART3_BASE       (APB1PERIPH_BASE + 0x4800U)
+#define UART4_BASE        (APB1PERIPH_BASE + 0x4C00U)
+#define UART5_BASE        (APB1PERIPH_BASE + 0x5000U)
 
 // 2) Register offsets
 
@@ -118,5 +118,76 @@
 #define USART3_CR2        (*(volatile uint32_t *)(USART3_BASE + 0x10U))
 #define USART3_CR3        (*(volatile uint32_t *)(USART3_BASE + 0x14U))
 #define USART3_GTPR       (*(volatile uint32_t *)(USART3_BASE + 0x18U))
+
+//*****************************
+//***********SPI***************
+//*****************************
+
+// Base adresses for SPI
+#define SPI1_BASE         (APB2PERIPH_BASE + 0x3000U)
+#define SPI2_BASE         (APB1PERIPH_BASE + 0x3800U)
+#define SPI3_BASE         (APB1PERIPH_BASE + 0x3C00U)
+#define SSPI4_BASE        (APB2PERIPH_BASE + 0x3400U)
+
+// 2) Register offsets
+
+//SPI1
+#define SPI1_CR1         (*(volatile uint32_t *)(SPI1_BASE + 0x00U))
+#define SPI1_CR2         (*(volatile uint32_t *)(SPI1_BASE + 0x04U))
+#define SPI1_SR          (*(volatile uint32_t *)(SPI1_BASE + 0x08U))
+#define SPI1_DR          (*(volatile uint32_t *)(SPI1_BASE + 0x0CU))
+
+//SPI2
+#define SPI2_CR1         (*(volatile uint32_t *)(SPI2_BASE + 0x00U))
+#define SPI2_CR2         (*(volatile uint32_t *)(SPI2_BASE + 0x04U))
+#define SPI2_SR          (*(volatile uint32_t *)(SPI2_BASE + 0x08U))
+#define SPI2_DR          (*(volatile uint32_t *)(SPI2_BASE + 0x0CU))
+
+//*****************************
+//***********I2C***************
+//*****************************
+
+// Base adresses for I2C
+#define I2C1_BASE        (APB1PERIPH_BASE + 0x5400)
+#define I2C2_BASE        (APB1PERIPH_BASE + 0x5800)
+#define I2C3_BASE        (APB1PERIPH_BASE + 0x5C00)
+
+// 2) Register offsets
+
+//I2C1
+#define I2C1_CR1         (*(volatile uint32_t *)(I2C1_BASE + 0x00U))
+#define I2C1_CR2         (*(volatile uint32_t *)(I2C1_BASE + 0x04U))
+#define I2C1_OAR1        (*(volatile uint32_t *)(I2C1_BASE + 0x08U))
+#define I2C1_OAR2        (*(volatile uint32_t *)(I2C1_BASE + 0x0CU))
+#define I2C1_DR          (*(volatile uint32_t *)(I2C1_BASE + 0x10U))
+#define I2C1_SR1         (*(volatile uint32_t *)(I2C1_BASE + 0x14U))
+#define I2C1_SR2         (*(volatile uint32_t *)(I2C1_BASE + 0x18U))
+#define I2C1_CCR         (*(volatile uint32_t *)(I2C1_BASE + 0x1CU))
+#define I2C1_TRISE       (*(volatile uint32_t *)(I2C1_BASE + 0x20U))
+#define I2C1_FLTR        (*(volatile uint32_t *)(I2C1_BASE + 0x24U))
+
+//I2C2
+#define I2C2_CR1         (*(volatile uint32_t *)(I2C2_BASE + 0x00U))
+#define I2C2_CR2         (*(volatile uint32_t *)(I2C2_BASE + 0x04U))
+#define I2C2_OAR1        (*(volatile uint32_t *)(I2C2_BASE + 0x08U))
+#define I2C2_OAR2        (*(volatile uint32_t *)(I2C2_BASE + 0x0CU))
+#define I2C2_DR          (*(volatile uint32_t *)(I2C2_BASE + 0x10U))
+#define I2C2_SR1         (*(volatile uint32_t *)(I2C2_BASE + 0x14U))
+#define I2C2_SR2         (*(volatile uint32_t *)(I2C2_BASE + 0x18U))
+#define I2C2_CCR         (*(volatile uint32_t *)(I2C2_BASE + 0x1CU))
+#define I2C2_TRISE       (*(volatile uint32_t *)(I2C2_BASE + 0x20U))
+#define I2C2_FLTR        (*(volatile uint32_t *)(I2C2_BASE + 0x24U))
+
+//I2C3
+#define I2C3_CR1         (*(volatile uint32_t *)(I2C3_BASE + 0x00U))
+#define I2C3_CR2         (*(volatile uint32_t *)(I2C3_BASE + 0x04U))
+#define I2C3_OAR1        (*(volatile uint32_t *)(I2C3_BASE + 0x08U))
+#define I2C3_OAR2        (*(volatile uint32_t *)(I2C3_BASE + 0x0CU))
+#define I2C3_DR          (*(volatile uint32_t *)(I2C3_BASE + 0x10U))
+#define I2C3_SR1         (*(volatile uint32_t *)(I2C3_BASE + 0x14U))
+#define I2C3_SR2         (*(volatile uint32_t *)(I2C3_BASE + 0x18U))
+#define I2C3_CCR         (*(volatile uint32_t *)(I2C3_BASE + 0x1CU))
+#define I2C3_TRISE       (*(volatile uint32_t *)(I2C3_BASE + 0x20U))
+#define I2C3_FLTR        (*(volatile uint32_t *)(I2C3_BASE + 0x24U))
 
 #endif
